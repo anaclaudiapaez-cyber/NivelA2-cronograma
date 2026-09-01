@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inglés – Nivel II | Presentación del curso</title>
+<style>
+  :root{
+    --celeste-1:#eaf6fb;
+    --celeste-2:#cfeaf5;
+    --celeste-3:#8fd0e8;
+    --azul-1:#2c8fb5;
+    --azul-2:#1c6f92;
+    --azul-3:#0e4c68;
+    --gris-texto:#2c3438;
+    --gris-suave:#6b7680;
+    --blanco:#ffffff;
+    --sombra: 0 6px 18px rgba(14,76,104,0.10);
+    --sombra-hover: 0 10px 26px rgba(14,76,104,0.18);
+    --radio: 18px;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    font-family:'Segoe UI', 'Trebuchet MS', Helvetica, Arial, sans-serif;
+    background:linear-gradient(180deg, var(--celeste-1) 0%, #f5fbfd 40%, #ffffff 100%);
+    color:var(--gris-texto);
+    padding:0 0 60px 0;
+  }
+
+  /* ===== HEADER ===== */
+  .topbar{
+    background:var(--blanco);
+    border-bottom:1px solid #e3f0f5;
+    padding:14px 6vw;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .topbar img{
+    height:52px;
+    width:auto;
+    display:block;
+  }
+  .topbar .dept{
+    font-size:0.82rem;
+    color:var(--gris-suave);
+    line-height:1.3;
+    border-left:2px solid var(--celeste-3);
+    padding-left:14px;
+  }
+
+  .hero{
+    background:linear-gradient(120deg, var(--azul-3) 0%, var(--azul-2) 55%, var(--azul-1) 100%);
+    color:var(--blanco);
+    padding:44px 6vw 40px 6vw;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    right:-60px; top:-60px;
+    width:260px; height:260px;
+    background:radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%);
+    border-radius:50%;
+  }
+  .hero .tag{
+    display:inline-block;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.35);
+    padding:5px 16px;
+    border-radius:999px;
+    font-size:0.78rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .hero h1{
+    margin:0 0 6px 0;
+    font-size:2.1rem;
+    font-weight:700;
+  }
+  .hero .docente{
+    font-size:1.02rem;
+    opacity:0.95;
+    margin-bottom:24px;
+  }
+  .hero .docente strong{font-weight:700;}
+
+  .info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+    gap:14px;
+    position:relative;
+    z-index:1;
+  }
+  .info-card{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:14px;
+    padding:14px 16px;
+    backdrop-filter:blur(2px);
+  }
+  .info-card .label{
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    opacity:0.8;
+    margin-bottom:4px;
+  }
+  .info-card .value{
+    font-size:1.05rem;
+    font-weight:700;
+    line-height:1.25;
+  }
+  .info-card .sub{
+    font-size:0.78rem;
+    opacity:0.85;
+    margin-top:2px;
+  }
+
+  /* ===== NAV TABS ===== */
+  .nav-wrap{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid #e3f0f5;
+    padding:12px 6vw;
+  }
+  .tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .tab-btn{
+    border:2px solid var(--celeste-3);
+    background:var(--blanco);
+    color:var(--azul-2);
+    font-weight:600;
+    font-size:0.9rem;
+    padding:9px 20px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all .2s ease;
+    white-space:nowrap;
+  }
+  .tab-btn:hover{
+    background:var(--celeste-1);
+    box-shadow:var(--sombra);
+  }
+  .tab-btn.active{
+    background:linear-gradient(120deg, var(--azul-2), var(--azul-1));
+    color:var(--blanco);
+    border-color:transparent;
+    box-shadow:var(--sombra-hover);
+  }
+
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:36px 6vw 0 6vw;
+  }
+
+  .panel{display:none; animation:fadein .35s ease;}
+  .panel.active{display:block;}
+  @keyframes fadein{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .section-title{
+    font-size:1.5rem;
+    color:var(--azul-3);
+    margin:0 0 6px 0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-sub{
+    color:var(--gris-suave);
+    margin:0 0 26px 0;
+    font-size:0.95rem;
+  }
+
+  .card{
+    background:var(--blanco);
+    border:1px solid #e3f0f5;
+    border-radius:var(--radio);
+    box-shadow:var(--sombra);
+    padding:24px 26px;
+    margin-bottom:20px;
+  }
+
+  /* Propósito */
+  .proposito-text{
+    line-height:1.7;
+    font-size:1rem;
+    color:var(--gris-texto);
+  }
+
+  /* Objetivos */
+  .obj-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:grid;
+    gap:12px;
+  }
+  .obj-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    background:var(--celeste-1);
+    border-radius:12px;
+    padding:12px 16px;
+    line-height:1.5;
+  }
+  .obj-icon{
+    flex:0 0 30px;
+    width:30px; height:30px;
+    border-radius:50%;
+    background:var(--azul-1);
+    color:var(--blanco);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.85rem;
+    font-weight:700;
+  }
+
+  /* Módulos - acordeón */
+  .modulo{
+    background:var(--blanco);
+    border:1px solid #e3f0f5;
+    border-radius:var(--radio);
+    box-shadow:var(--sombra);
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .modulo-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:18px 22px;
+    cursor:pointer;
+    user-select:none;
+    transition:background .2s;
+  }
+  .modulo-header:hover{background:var(--celeste-1);}
+  .modulo-num{
+    flex:0 0 42px;
+    height:42px; width:42px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--azul-1), var(--azul-2));
+    color:var(--blanco);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:1.1rem;
+  }
+  .modulo-title{
+    flex:1;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--azul-3);
+  }
+  .modulo-chevron{
+    color:var(--azul-1);
+    font-size:1.2rem;
+    transition:transform .25s;
+  }
+  .modulo.open .modulo-chevron{transform:rotate(180deg);}
+  .modulo-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    padding:0 22px;
+  }
+  .modulo.open .modulo-body{
+    padding:0 22px 22px 22px;
+  }
+  .modulo-block{margin-bottom:14px;}
+  .modulo-block:last-child{margin-bottom:0;}
+  .modulo-block h4{
+    margin:0 0 6px 0;
+    font-size:0.82rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--azul-1);
+  }
+  .modulo-block p{
+    margin:0;
+    line-height:1.6;
+    color:var(--gris-texto);
+    font-size:0.95rem;
+  }
+  .pill-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .pill{
+    background:var(--celeste-2);
+    color:var(--azul-3);
+    border-radius:999px;
+    padding:5px 14px;
+    font-size:0.82rem;
+    font-weight:600;
+  }
+
+  /* Metodología */
+  .metodo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+  }
+  .metodo-card{
+    background:var(--blanco);
+    border-radius:16px;
+    border:1px solid #e3f0f5;
+    box-shadow:var(--sombra);
+    padding:20px;
+    text-align:center;
+  }
+  .metodo-card .emoji{
+    font-size:1.8rem;
+    margin-bottom:10px;
+  }
+  .metodo-card h4{
+    margin:0 0 8px 0;
+    color:var(--azul-2);
+    font-size:1rem;
+  }
+  .metodo-card p{
+    margin:0;
+    font-size:0.88rem;
+    color:var(--gris-suave);
+    line-height:1.5;
+  }
+  .metodo-intro{
+    line-height:1.7;
+    margin-bottom:22px;
+  }
+
+  /* Evaluación timeline */
+  .timeline{
+    position:relative;
+    margin:20px 0 30px 0;
+    padding-left:30px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:9px; top:6px; bottom:6px;
+    width:3px;
+    background:linear-gradient(180deg, var(--celeste-3), var(--azul-1));
+    border-radius:3px;
+  }
+  .tl-item{
+    position:relative;
+    padding-bottom:26px;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{
+    position:absolute;
+    left:-30px; top:2px;
+    width:20px; height:20px;
+    border-radius:50%;
+    background:var(--azul-1);
+    border:4px solid var(--celeste-1);
+    box-shadow:0 0 0 2px var(--azul-1);
+  }
+  .tl-content{
+    background:var(--celeste-1);
+    border-radius:14px;
+    padding:14px 18px;
+  }
+  .tl-content .tl-title{
+    font-weight:700;
+    color:var(--azul-3);
+    margin-bottom:4px;
+  }
+  .tl-content p{margin:0; font-size:0.92rem; line-height:1.55; color:var(--gris-texto);}
+
+  .criterios-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+    margin-top:20px;
+  }
+  .criterio-card h4{
+    color:var(--azul-2);
+    margin:0 0 8px 0;
+    font-size:0.95rem;
+  }
+  .criterio-card p{
+    margin:0;
+    font-size:0.9rem;
+    line-height:1.6;
+    color:var(--gris-texto);
+  }
+
+  .req-banner{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:linear-gradient(120deg, var(--celeste-2), var(--celeste-1));
+    border-left:4px solid var(--azul-1);
+    border-radius:12px;
+    padding:16px 20px;
+    margin-bottom:22px;
+    font-size:0.92rem;
+    line-height:1.55;
+  }
+  .req-banner .req-emoji{font-size:1.4rem;}
+
+  .badge-approve{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--azul-2);
+    color:var(--blanco);
+    padding:8px 18px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.9rem;
+    margin-top:16px;
+  }
+
+  /* Info del curso */
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:16px;
+    margin-bottom:22px;
+  }
+  .stat-card{
+    background:linear-gradient(135deg, var(--azul-1), var(--azul-2));
+    color:var(--blanco);
+    border-radius:16px;
+    padding:20px;
+    text-align:center;
+  }
+  .stat-card .num{
+    font-size:1.9rem;
+    font-weight:800;
+  }
+  .stat-card .lbl{
+    font-size:0.8rem;
+    opacity:0.9;
+    margin-top:4px;
+  }
+  .biblio-card{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .biblio-icon{
+    flex:0 0 46px;
+    height:46px; width:46px;
+    border-radius:12px;
+    background:var(--celeste-1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.3rem;
+  }
+
+  footer{
+    text-align:center;
+    color:var(--gris-suave);
+    font-size:0.8rem;
+    margin-top:50px;
+    padding:0 6vw;
+  }
+
+  @media (max-width:640px){
+    .hero h1{font-size:1.5rem;}
+    .topbar{flex-wrap:wrap;}
+    main{padding:28px 5vw 0 5vw;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img src="data:image/png;base64,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" alt="Universidad Nacional de La Pampa">
+</div>
+
+<div class="hero">
+  <span class="tag">Programa de Idiomas para la Comunidad Universitaria</span>
+  <h1>Inglés – Nivel II</h1>
+  <div class="docente">Docente a cargo: <strong>Paez, Ana Claudia</strong></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="label">Carga horaria</div>
+      <div class="value">3 hs / semana</div>
+      <div class="sub">2 sincrónicas + 1 asincrónica</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Total del curso</div>
+      <div class="value">42 hs</div>
+      <div class="sub">14 semanas</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Día y horario</div>
+      <div class="value">Miércoles</div>
+      <div class="sub">20:00 a 22:00 hs</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Inicio</div>
+      <div class="value">9 de septiembre</div>
+      <div class="sub">2026</div>
+    </div>
+    <div class="info-card">
+      <div class="label">Cupo</div>
+      <div class="value">25 personas</div>
+      <div class="sub">Inscripción limitada</div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="proposito">Propósito y objetivos</button>
+    <button class="tab-btn" data-tab="modulos">Módulos</button>
+    <button class="tab-btn" data-tab="metodologia">Metodología</button>
+    <button class="tab-btn" data-tab="evaluacion">Evaluación</button>
+    <button class="tab-btn" data-tab="info">Info del curso</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- PROPÓSITO Y OBJETIVOS -->
+  <section class="panel active" id="proposito">
+    <h2 class="section-title">🎯 Propósito del nivel</h2>
+    <p class="section-sub">Qué se busca lograr en este tramo del trayecto formativo</p>
+    <div class="card">
+      <p class="proposito-text">
+        El Nivel II tiene como propósito consolidar y ampliar las competencias comunicativas adquiridas en el nivel inicial,
+        favoreciendo que los estudiantes puedan desenvolverse en situaciones habituales de comunicación oral y escrita.
+        Se busca que logren comprender y producir mensajes breves, intercambiar información, expresar opiniones, describir
+        experiencias y desenvolverse en diferentes contextos personales, académicos y laborales.
+      </p>
+      <p class="proposito-text" style="margin-top:14px;">
+        El curso propone un abordaje integrado de las habilidades de <strong>comprensión oral, expresión oral, lectura y
+        escritura</strong>, incorporando progresivamente recursos gramaticales y vocabulario que permitan utilizar el
+        idioma de manera funcional y significativa.
+      </p>
+    </div>
+
+    <h2 class="section-title" style="margin-top:36px;">✅ Objetivos</h2>
+    <p class="section-sub">Al finalizar el curso, se espera que los y las estudiantes puedan:</p>
+    <div class="card">
+      <ul class="obj-list">
+        <li><span class="obj-icon">1</span>Comprender información general y específica en textos orales y escritos breves.</li>
+        <li><span class="obj-icon">2</span>Participar en intercambios comunicativos vinculados con situaciones cotidianas, académicas y laborales.</li>
+        <li><span class="obj-icon">3</span>Expresar experiencias, acontecimientos pasados, planes, opiniones, preferencias y posibilidades.</li>
+        <li><span class="obj-icon">4</span>Producir textos breves y coherentes adecuados a diferentes situaciones comunicativas.</li>
+        <li><span class="obj-icon">5</span>Ampliar y utilizar vocabulario relacionado con ámbitos personales, sociales, laborales y de interés general.</li>
+        <li><span class="obj-icon">6</span>Aplicar estructuras gramaticales básicas e intermedias en situaciones concretas de comunicación.</li>
+        <li><span class="obj-icon">7</span>Desarrollar estrategias que faciliten la comprensión y el aprendizaje autónomo del idioma.</li>
+        <li><span class="obj-icon">8</span>Reflexionar sobre el uso de la lengua y sobre aspectos culturales vinculados con las situaciones comunicativas trabajadas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MÓDULOS -->
+  <section class="panel" id="modulos">
+    <h2 class="section-title">📚 Contenidos del curso</h2>
+    <p class="section-sub">5 módulos temáticos — hacé clic en cada uno para ver el detalle</p>
+
+    <div class="modulo open">
+      <div class="modulo-header" onclick="toggleModulo(this)">
+        <div class="modulo-num">1</div>
+        <div class="modulo-title">Getting to know people in academic contexts</div>
+        <div class="modulo-chevron">▾</div>
+      </div>
+      <div class="modulo-body">
+        <div class="modulo-block">
+          <h4>Temas y funciones</h4>
+          <p>Presentaciones e interacción en contextos universitarios; relaciones personales y académicas; integrantes de la comunidad universitaria; ámbitos de estudio y trabajo; carreras, áreas de formación y actividades académicas; intercambio de información sobre trayectorias educativas e intereses; registros formales e informales en situaciones académicas.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Gramática y vocabulario</h4>
+          <p>Presente simple; formulación de preguntas; pronombres personales e interrogativos; expresiones para solicitar y proporcionar información; vocabulario relacionado con estudios, profesiones, actividades académicas y ocupaciones.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Tipos de texto</h4>
+          <div class="pill-row">
+            <span class="pill">Textos breves</span>
+            <span class="pill">Perfiles personales y académicos</span>
+            <span class="pill">Formularios</span>
+            <span class="pill">Correos electrónicos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo">
+      <div class="modulo-header" onclick="toggleModulo(this)">
+        <div class="modulo-num">2</div>
+        <div class="modulo-title">Talking about academic experiences</div>
+        <div class="modulo-chevron">▾</div>
+      </div>
+      <div class="modulo-body">
+        <div class="modulo-block">
+          <h4>Temas y funciones</h4>
+          <p>Experiencias personales y académicas; trayectoria educativa; acontecimientos y experiencias universitarias; biografías y perfiles de personas vinculadas con diferentes campos de conocimiento; descripción y narración de acontecimientos pasados.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Gramática y vocabulario</h4>
+          <p>Pasado simple y pasado continuo; <em>used to</em> para describir hábitos y situaciones pasadas; <em>could/couldn't</em> para expresar capacidades en el pasado; expresiones y conectores temporales. Vocabulario relacionado con estudios, experiencias, actividades y acontecimientos académicos.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Tipos de texto</h4>
+          <div class="pill-row">
+            <span class="pill">Relatos breves</span>
+            <span class="pill">Biografías</span>
+            <span class="pill">Perfiles</span>
+            <span class="pill">Experiencias universitarias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo">
+      <div class="modulo-header" onclick="toggleModulo(this)">
+        <div class="modulo-num">3</div>
+        <div class="modulo-title">The university and the world we live in</div>
+        <div class="modulo-chevron">▾</div>
+      </div>
+      <div class="modulo-body">
+        <div class="modulo-block">
+          <h4>Temas y funciones</h4>
+          <p>Tecnología y educación; recursos digitales para el aprendizaje; cambios sociales y culturales; problemáticas ambientales y su impacto en la sociedad y en las comunidades; universidad y sociedad; proyección de cambios y tendencias vinculadas con la educación, la tecnología y el ambiente.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Gramática y vocabulario</h4>
+          <p><em>Will</em> y <em>going to</em> para expresar predicciones, planes e intenciones; expresiones para realizar predicciones; verbos modales para expresar recomendaciones, obligaciones, posibilidades y prohibiciones. Vocabulario relacionado con tecnología, educación, ambiente, sociedad y cambios futuros.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Tipos de texto</h4>
+          <div class="pill-row">
+            <span class="pill">Textos informativos</span>
+            <span class="pill">Textos descriptivos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo">
+      <div class="modulo-header" onclick="toggleModulo(this)">
+        <div class="modulo-num">4</div>
+        <div class="modulo-title">Free time, travelling and academic mobility</div>
+        <div class="modulo-chevron">▾</div>
+      </div>
+      <div class="modulo-body">
+        <div class="modulo-block">
+          <h4>Temas y funciones</h4>
+          <p>Tiempo libre, intereses y actividades extracurriculares; viajes personales y académicos; movilidad estudiantil e intercambios; descripción de ciudades, instituciones y lugares de interés; experiencias de viaje y participación en actividades académicas y culturales; expresión de gustos, preferencias y opiniones.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Gramática y vocabulario</h4>
+          <p>Uso de diferentes tiempos verbales para describir experiencias, actividades habituales y acontecimientos pasados; expresiones para hablar sobre preferencias y realizar comparaciones sencillas; preposiciones y expresiones para describir lugares y desplazamientos. Vocabulario relacionado con viajes, transporte, alojamiento, actividades culturales, movilidad e intercambios universitarios.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Tipos de texto</h4>
+          <div class="pill-row">
+            <span class="pill">Itinerarios</span>
+            <span class="pill">Mensajes</span>
+            <span class="pill">Correos electrónicos</span>
+            <span class="pill">Textos sobre experiencias y desplazamientos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modulo">
+      <div class="modulo-header" onclick="toggleModulo(this)">
+        <div class="modulo-num">5</div>
+        <div class="modulo-title">English for academic and professional life</div>
+        <div class="modulo-chevron">▾</div>
+      </div>
+      <div class="modulo-body">
+        <div class="modulo-block">
+          <h4>Temas y funciones</h4>
+          <p>Rutinas académicas y laborales; profesiones y ocupaciones; ámbitos profesionales relacionados con las diferentes áreas de formación; actividades y responsabilidades académicas y laborales; situaciones comunicativas en contextos universitarios y profesionales; reuniones, citas y entrevistas; solicitud y provisión de información; resolución de dudas y comunicación de necesidades en contextos académicos y laborales.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Gramática y vocabulario</h4>
+          <p>Presente simple y presente continuo para describir rutinas y actividades en desarrollo; expresiones de frecuencia; formas interrogativas; verbos modales para expresar posibilidad, capacidad, obligación y solicitud; conectores básicos para organizar información. Vocabulario relacionado con estudios, trabajo, profesiones, responsabilidades, reuniones, citas y comunicación profesional.</p>
+        </div>
+        <div class="modulo-block">
+          <h4>Tipos de texto</h4>
+          <div class="pill-row">
+            <span class="pill">Correos electrónicos</span>
+            <span class="pill">Mensajes</span>
+            <span class="pill">Formularios</span>
+            <span class="pill">Perfiles profesionales</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGÍA -->
+  <section class="panel" id="metodologia">
+    <h2 class="section-title">🛠️ Metodología</h2>
+    <p class="section-sub">Cómo se trabaja durante el curso</p>
+    <div class="card">
+      <p class="metodo-intro">
+        El curso se desarrollará desde un <strong>enfoque comunicativo y práctico</strong>, priorizando el uso del inglés
+        en situaciones significativas. Las actividades partirán de textos, diálogos, situaciones cotidianas y otros
+        recursos que permitan incorporar y utilizar los contenidos lingüísticos en contexto. Se promoverán instancias
+        de trabajo individual y colaborativo, combinando actividades de comprensión, producción, interacción y reflexión
+        sobre el funcionamiento de la lengua.
+      </p>
+      <div class="metodo-grid">
+        <div class="metodo-card">
+          <div class="emoji">💬</div>
+          <h4>Enfoque comunicativo</h4>
+          <p>El inglés se usa en situaciones reales y significativas, no solo se estudia como sistema.</p>
+        </div>
+        <div class="metodo-card">
+          <div class="emoji">📖</div>
+          <h4>Recursos variados</h4>
+          <p>Textos, diálogos y situaciones cotidianas como punto de partida de cada actividad.</p>
+        </div>
+        <div class="metodo-card">
+          <div class="emoji">🤝</div>
+          <h4>Trabajo individual y colaborativo</h4>
+          <p>Instancias que combinan el trabajo autónomo con la interacción entre pares.</p>
+        </div>
+        <div class="metodo-card">
+          <div class="emoji">🔎</div>
+          <h4>Comprensión, producción y reflexión</h4>
+          <p>Se integran las cuatro habilidades junto con la reflexión sobre el uso de la lengua.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVALUACIÓN -->
+  <section class="panel" id="evaluacion">
+    <h2 class="section-title">📝 Evaluación</h2>
+    <p class="section-sub">Recorrido de instancias evaluativas a lo largo del curso</p>
+
+    <div class="req-banner">
+      <span class="req-emoji">📋</span>
+      <span>Previo al inicio del curso, se solicitará a quienes deseen cursar este nivel la presentación de documentación que acredite el cursado de un nivel A1.</span>
+    </div>
+
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Evaluación diagnóstica — Inicio del curso</div>
+            <p>Identifica los conocimientos y competencias con los que cuenta cada estudiante, tomando como referencia los desempeños del nivel A1 del Marco Común Europeo de Referencia para las Lenguas. Permite reconocer saberes previos y orientar el proceso formativo.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Evaluación parcial — Semana 8</div>
+            <p>Instancia escrita e instancia oral. En caso de desaprobación o inasistencia, se dispondrá de una instancia recuperatoria durante la semana siguiente.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Evaluación final integradora — Semana 14</div>
+            <p>Instancia escrita e instancia oral, ambas a aprobar de manera independiente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="badge-approve">✔ Mínimo 60% de desempeño satisfactorio en cada instancia escrita y oral</div>
+    </div>
+
+    <h2 class="section-title" style="margin-top:36px;">🏅 Criterios de aprobación e instrumentos de certificación</h2>
+    <div class="card">
+      <div class="criterios-grid">
+        <div class="criterio-card">
+          <h4>Evaluaciones escritas</h4>
+          <p>Comprensión lectora, producción escrita, manejo de estructuras gramaticales y uso del vocabulario trabajado. Se valora claridad, coherencia, organización, vocabulario, gramática y ortografía (incluida la puntuación).</p>
+        </div>
+        <div class="criterio-card">
+          <h4>Evaluaciones orales</h4>
+          <p>Comprensión y producción de mensajes en lengua inglesa: vocabulario específico, estructuras lingüísticas abordadas, claridad y coherencia, pronunciación y entonación.</p>
+        </div>
+        <div class="criterio-card">
+          <h4>Certificado de aprobación</h4>
+          <p>Requiere aprobar todas las instancias de evaluación previstas y acreditar un mínimo del 70% de asistencia a los encuentros sincrónicos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO DEL CURSO -->
+  <section class="panel" id="info">
+    <h2 class="section-title">ℹ️ Información del curso</h2>
+    <p class="section-sub">Datos prácticos y bibliografía</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="num">42 hs</div>
+        <div class="lbl">Carga horaria total</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">14</div>
+        <div class="lbl">Semanas</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">25</div>
+        <div class="lbl">Cupo de personas</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">5</div>
+        <div class="lbl">Módulos temáticos</div>
+      </div>
+    </div>
+
+    <div class="card biblio-card">
+      <div class="biblio-icon">📗</div>
+      <div>
+        <h4 style="margin:0 0 4px 0; color:var(--azul-2);">Bibliografía</h4>
+        <p style="margin:0; color:var(--gris-texto); font-size:0.92rem;">Materiales elaborados por la docente.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Inglés – Nivel II · Facultad de Ciencias Humanas · Universidad Nacional de La Pampa
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabs.forEach(b=>b.classList.remove('active'));
+      panels.forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+
+  function toggleModulo(header){
+    const modulo = header.parentElement;
+    const wasOpen = modulo.classList.contains('open');
+    document.querySelectorAll('.modulo').forEach(m=>{
+      m.classList.remove('open');
+      m.querySelector('.modulo-body').style.maxHeight = null;
+    });
+    if(!wasOpen){
+      modulo.classList.add('open');
+      const body = modulo.querySelector('.modulo-body');
+      body.style.maxHeight = body.scrollHeight + 40 + 'px';
+    }
+  }
+
+  // Abrir el primer módulo al cargar
+  window.addEventListener('load', ()=>{
+    const firstModulo = document.querySelector('.modulo.open .modulo-body');
+    if(firstModulo){ firstModulo.style.maxHeight = firstModulo.scrollHeight + 40 + 'px'; }
+  });
+</script>
+
+</body>
+</html>
